@@ -1,3 +1,6 @@
+import React from 'react';
+import { Platform } from "react-native";
+
 import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 
@@ -5,16 +8,47 @@ import MovieScreen from "../screens/Movies";
 import TVScreen from "../screens/TV";
 import SearchScreen from "../screens/Search";
 import {BG_COLOR} from "../constants/Colors";
+import TabBarIcon from "../components/TabBarIcon";
 
 const TabNavigation = createBottomTabNavigator(
     {
-        Movies: MovieScreen,
-        TV: TVScreen,
-        Search: SearchScreen
+        Movies: {
+            screen: MovieScreen,
+            navigationOptions: {
+                tabBarIcon: ({ focused }) => (
+                    <TabBarIcon
+                        focused={focused}
+                        name={Platform.OS === "ios" ? "ios-film" : "md-film"}
+                    />
+                )
+            }
+        },
+        TV: {
+            screen: TVScreen,
+            navigationOptions: {
+                tabBarIcon: ({ focused }) => (
+                    <TabBarIcon
+                        focused={focused}
+                        name={Platform.OS === "ios" ? "ios-tv" : "md-tv"}
+                    />
+                )
+            }
+        },
+        Search: {
+            screen: SearchScreen,
+            navigationOptions: {
+                tabBarIcon: ({ focused }) => (
+                    <TabBarIcon
+                        focused={focused}
+                        name={Platform.OS === "ios" ? "ios-search" : "md-search"}
+                    />
+                )
+            }
+        }
     },
     {
         tabBarOptions: {
-            showLabel: false, //tabBar 안에 text 넣는 곳
+            showLabel: true, //tabBar 안에 text 넣는 곳
             style: {
                 backgroundColor: BG_COLOR
             }
