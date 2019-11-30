@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { AppLoading } from "expo";
+import { StatusBar } from "react-native";
 import * as Font from 'expo-font';
 import { Ionicons } from "@expo/vector-icons";
 import MainNavigation from "./navigation/MainNavigation";
@@ -22,7 +23,10 @@ class App extends Component {
         const {loaded} = this.state;
         if(loaded) {
             return (
-                <MainNavigation />
+                <>
+                    <StatusBar barStyle="light-content" />
+                    <MainNavigation />
+                </>
             );
         } else {
             return (

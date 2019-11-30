@@ -19,7 +19,10 @@ const MainNavigation = createStackNavigator(
             }
         }
     },
-    {}
+    {
+        headerMode: "screen",
+        headerBackTitleVisible: false //뒤로가기 버튼의 타이틀 유무
+    }
 );
 
 export default createAppContainer(MainNavigation); //createAppContainer안에 MainNavigatation을 감싼다
